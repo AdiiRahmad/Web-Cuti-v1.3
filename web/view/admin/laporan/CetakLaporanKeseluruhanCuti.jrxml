@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="750" pageHeight="1200" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6f59e33-6064-4b1a-992a-77cb5037404c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     CUTI."JENIS_CUTI" AS CUTI_JENIS_CUTI,
+     DETAIL_CUTI."ID_DETAIL_CUTI" AS DETAIL_CUTI_ID_DETAIL_CUTI,
+     DETAIL_CUTI."NIK" AS DETAIL_CUTI_NIK,
+     DETAIL_CUTI."ID_CUTI" AS DETAIL_CUTI_ID_CUTI,
+     DETAIL_CUTI."KETERANGAN" AS DETAIL_CUTI_KETERANGAN,
+     DETAIL_CUTI."TANGGAL_MULAI" AS DETAIL_CUTI_TANGGAL_MULAI,
+     DETAIL_CUTI."TANGGAL_SELESAI" AS DETAIL_CUTI_TANGGAL_SELESAI,
+     DETAIL_CUTI."LAMA_CUTI" AS DETAIL_CUTI_LAMA_CUTI,
+     JABATAN."JABATAN" AS JABATAN_JABATAN,
+     KARYAWAN."NAMA" AS KARYAWAN_NAMA,
+     SETUJU_CUTI."ID_SETUJU_CUTI" AS SETUJU_CUTI_ID_SETUJU_CUTI,
+     SETUJU_CUTI."STATUS" AS SETUJU_CUTI_STATUS,
+     SETUJU_CUTI."ID_JABATAN" AS SETUJU_CUTI_ID_JABATAN,
+     JABATAN."ID_PIMPINAN" AS JABATAN_ID_PIMPINAN
+FROM
+     "HR"."CUTI" CUTI INNER JOIN "HR"."DETAIL_CUTI" DETAIL_CUTI ON CUTI."ID_CUTI" = DETAIL_CUTI."ID_CUTI"
+     INNER JOIN "HR"."KARYAWAN" KARYAWAN ON DETAIL_CUTI."NIK" = KARYAWAN."NIK"
+     INNER JOIN "HR"."SETUJU_CUTI" SETUJU_CUTI ON DETAIL_CUTI."ID_DETAIL_CUTI" = SETUJU_CUTI."ID_DETAIL_CUTI"
+     INNER JOIN "HR"."JABATAN" JABATAN ON SETUJU_CUTI."ID_JABATAN" = JABATAN."ID_JABATAN"]]>
+	</queryString>
+	<field name="CUTI_JENIS_CUTI" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_ID_DETAIL_CUTI" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_NIK" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_ID_CUTI" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_KETERANGAN" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_TANGGAL_MULAI" class="java.sql.Timestamp"/>
+	<field name="DETAIL_CUTI_TANGGAL_SELESAI" class="java.sql.Timestamp"/>
+	<field name="DETAIL_CUTI_LAMA_CUTI" class="java.math.BigDecimal"/>
+	<field name="JABATAN_JABATAN" class="java.lang.String"/>
+	<field name="KARYAWAN_NAMA" class="java.lang.String"/>
+	<field name="SETUJU_CUTI_ID_SETUJU_CUTI" class="java.lang.String"/>
+	<field name="SETUJU_CUTI_STATUS" class="java.lang.String"/>
+	<field name="SETUJU_CUTI_ID_JABATAN" class="java.lang.String"/>
+	<field name="JABATAN_ID_PIMPINAN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="184" y="16" width="331" height="31" forecolor="#333333" backcolor="#333333" uuid="96fd4e58-d78b-4af1-85af-1e114c692040"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA CUTI KARYAWAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="610" y="12" width="100" height="20" uuid="c5732f93-e79f-48e8-a19d-1644a3b12492"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="58" height="20" uuid="7785c24b-4053-424a-9217-44dbffab3554"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID Detail Cuti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="1" width="58" height="20" uuid="2ec3a10e-4257-4e28-bf75-542d9f5f89b8"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="1" width="121" height="20" uuid="df5040c6-8a0b-445f-9b53-b1621d3660b1"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="0" width="83" height="20" uuid="d3330d9f-b997-4361-83a3-cd52e3aac4bf"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Jenis Cuti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="0" width="92" height="20" uuid="2e896fe4-b2b7-4d5e-bef6-bc425f5e9fee"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tanggal Mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="504" y="0" width="66" height="20" uuid="ca66bb4c-9db9-40c1-8c47-305f044034db"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Lama Cuti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="570" y="0" width="58" height="20" uuid="b6ffe3c2-6daf-4346-88d9-9a02060cfa9b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="628" y="0" width="82" height="20" uuid="b50a0cdb-1a3d-4d97-bc8b-dfc8e11b5435"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Pimpinan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="92" height="20" uuid="6d11ee43-53c8-4fe4-9caa-4fb4f3528b00"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Jabatan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="58" height="20" uuid="01d99f5b-e977-4302-a761-b8372a82bd15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_ID_DETAIL_CUTI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="1" width="58" height="20" uuid="871ebc9b-5438-4863-b6b8-a72e04d9b406"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_NIK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="83" height="20" uuid="eb15954a-d773-4702-8bee-2a6241114db3"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUTI_JENIS_CUTI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="1" width="92" height="20" uuid="f8eb3e7c-770a-4d8a-baf7-ba0f5e1d9bc8"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_TANGGAL_MULAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="0" width="121" height="20" uuid="839b3e7f-4c73-419e-b5c1-d0ec81445738"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KARYAWAN_NAMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="569" y="1" width="58" height="20" uuid="855c304d-2de9-4065-ac98-71f244fb4445"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SETUJU_CUTI_STATUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="628" y="1" width="82" height="20" uuid="cb7fb406-fd96-40ee-88a1-535e73fd5f94"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{JABATAN_JABATAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="1" width="92" height="20" uuid="c338412b-7372-452e-9cb5-b9b2d7fb11ae"/>
+				<textFieldExpression><![CDATA[$F{SETUJU_CUTI_ID_JABATAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="1" width="66" height="20" uuid="4e76cab2-c0ba-4e92-a4dd-263fe2e8d6e7"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_LAMA_CUTI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="590" y="12" width="80" height="20" uuid="48871f3e-912f-4c19-aed3-9927d3ed87fa"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="670" y="12" width="40" height="20" uuid="9978285c-0fb9-4fc6-8ee6-a081baa5bfd5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
